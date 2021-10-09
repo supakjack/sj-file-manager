@@ -25,8 +25,8 @@ module.exports = {
   },
   list: async (req, res, next) => {
     try {
-      const doesSelect = await filesModel.select()
-      res.status(200).send({ doesSelect })
+      const data = await filesModel.select()
+      res.status(200).send({ data })
     } catch (error) {
       if (error.isJoi === true) return next(createError.InternalServerError())
       next(error)
