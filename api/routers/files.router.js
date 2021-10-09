@@ -4,7 +4,6 @@ const fileController = require('../controllers/files.controller')
 
 router.post('/save', fileController.save)
 router.delete('/delete', fileController.delete)
-router.get('/download', fileController.download)
-router.get('/show', fileController.show)
+router.get('/list', fileController.list)
 
 module.exports = router

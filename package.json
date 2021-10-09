@@ -9,17 +9,20 @@
   "author": "supakjack",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.22.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "http-errors": "^1.8.0",
+    "jszip": "^3.7.1",
     "knex": "^0.95.11",
     "mkdirp": "^1.0.4",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nanoid": "^3.1.29",
     "rmdir": "^1.2.0",
+    "zip-dir": "^2.0.0",
     "zip-folder": "^1.0.0"
   }
 }
