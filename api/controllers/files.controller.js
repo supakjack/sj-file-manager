@@ -10,14 +10,30 @@ module.exports = {
       const floderName = nanoid(24)
       const filesUpload = req.files.filesUpload
       const ref_id = req.query.ref_id
-      await filesUpload.map(async (file) => {
+      // console.log(filesUpload);
+      if (filesUpload[0]) {
+        console.log('array')
+        await filesUpload.map(async (file) => {
+          const floderPath = process.env.BASE_STORAGE_PATH + '/' + floderName
+          await mkdirp(floderPath)
+          const filePath = floderPath + '/' + file.name
+          await file.mv(filePath)
+          await filesModel.insert({ floderName, fileName: file.name, ref_id })
+        })
+        res.status(201).send({ floderName })
+      } else {
+        console.log('not array')
         const floderPath = process.env.BASE_STORAGE_PATH + '/' + floderName
         await mkdirp(floderPath)
-        const filePath = floderPath + '/' + file.name
-        await file.mv(filePath)
-        await filesModel.insert({ floderName, fileName: file.name, ref_id })
-      })
-      res.status(201).send({ floderName })
+        const filePath = floderPath + '/' + filesUpload.name
+        await filesUpload.mv(filePath)
+        await filesModel.insert({
+          floderName,
+          fileName: filesUpload.name,
+          ref_id
+        })
+        res.status(201).send({ floderName })
+      }
     } catch (error) {
       if (error.isJoi === true) return next(createError.InternalServerError())
       next(error)
