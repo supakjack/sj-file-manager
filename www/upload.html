@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <h1>Upload File Page</h1>
 
-        <form action="http://localhost:3000/files/save?apiKey=your_private_key" method="post"
+        <form action="http://localhost:3001/files/save?apiKey=your_private_key" method="post"
             enctype="multipart/form-data">
             <div>
                 <label class="form-label">Upload file here</label>
@@ -60,7 +60,7 @@
 
         <script>
             var table = $('#example').DataTable({
-                ajax: "http://localhost:3000/files/list?apiKey=your_private_key",
+                ajax: "http://localhost:3001/files/list?apiKey=your_private_key",
                 "columns": [
                     { "data": "id" },
                     { "data": "floderName" },
